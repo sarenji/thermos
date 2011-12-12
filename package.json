@@ -1,0 +1,22 @@
+{
+  "name": "choco",
+  "version": "0.0.1",
+  "dependencies": {
+    "coffee-script": ">= 1.1.3"
+  },
+  "keywords": [
+    "template",
+    "coffeescript"
+  ],
+  "devDependencies": {
+    "should": "0.3.2",
+    "mocha": "0.3.6"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "contributors": [
+    "Maurice Machado <maurice@bitbending.com>",
+    "jaekwon <jkwon.work@gmail.com>"
+  ]
+}
