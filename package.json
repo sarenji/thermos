@@ -1,6 +1,6 @@
 {
   "name": "choco",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./lib/choco",
   "dependencies": {},
   "keywords": [
