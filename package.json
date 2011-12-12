@@ -1,19 +1,19 @@
 {
   "name": "choco",
   "version": "0.0.1",
-  "dependencies": {
-    "coffee-script": ">= 1.1.3"
-  },
+  "main": "./lib/choco",
+  "dependencies": {},
   "keywords": [
     "template",
     "coffeescript"
   ],
   "devDependencies": {
+    "coffee-script": ">= 1.1.3",
     "should": "0.3.2",
     "mocha": "0.3.6"
   },
   "scripts": {
-    "test": "make test"
+    "test": "mocha"
   },
   "contributors": [
     "Maurice Machado <maurice@bitbending.com>",
