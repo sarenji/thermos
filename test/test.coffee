@@ -94,11 +94,14 @@ describe 'a basic template', ->
     output : '<!DOCTYPE html><html><head><title>hello</title></head><body><p>Hello world!</p></body></html>'
 
 describe 'a helper function', ->
+  helper_helper = (url) ->
+    "#{url}.js"
+
   it "gets included", test
     render : ->
-      @js 'hullo.js'
+      @js 'hullo'
     opts:
       helpers :
         js : (url) ->
-          @script type: 'text/javascript', src: url
+          @script type: 'text/javascript', src: helper_helper(url)
     output : '<script type="text/javascript" src="hullo.js"></script>'
