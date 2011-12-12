@@ -10,11 +10,24 @@ of [CoffeeKup](https://github.com/mauricemach/coffeekup).
 
 ```
 choco = require 'choco'
-choco.render ->
+
+normalizeUrl = (url, ext) ->
+  if url.substr -ext.length isnt ext
+    "#{url}#{ext}"
+  else
+    url
+
+helpers =
+  js : (url) ->
+    url = normalizeUrl(url, '.js')
+    @script src: url, type: 'text/javascript'
+
+choco.render helpers, ->
   @doctype 5
   @html ->
     @head ->
       @title "hello"
+      @js "main"
     @body ->
       @p "Hello world!"
 ```
