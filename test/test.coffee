@@ -108,7 +108,7 @@ describe 'a helper function', ->
 
 describe 'a configuration', ->
   helper_helper = (url, ext) ->
-    if url.substr -ext.length is ext then "#{url}#{ext}" else url
+    if url.substr(-ext.length) isnt ext then "#{url}#{ext}" else url
 
   beforeEach ->
     choco.configure
