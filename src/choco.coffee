@@ -43,7 +43,10 @@ doctypes =
   'ce': '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "ce-html-1.0-transitional.dtd">'
 
 class ChocoContext
-  constructor : (template, opts={}) ->
+  constructor : (opts={}, template) ->
+    if arguments.length is 1
+      template = opts
+      opts     = {}
     @buffer = []
     @template = template
     @locals = opts.locals or {}
@@ -90,6 +93,6 @@ class ChocoContext
       @text "</#{tagName}>"
     ""
 
-@render = (template, opts={}) ->
-  cc = new ChocoContext(template, opts)
+@render = (opts={}, template) ->
+  cc = new ChocoContext(opts, template)
   cc.render()

@@ -4,7 +4,7 @@ choco  = require '../src/choco'
 test = (args) ->
   ->
     {render, output, opts} = args
-    choco.render(render, opts).should.equal output
+    choco.render(opts, render).should.equal output
 
 describe "pure text", ->
   it "renders correctly", test
