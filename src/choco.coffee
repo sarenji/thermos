@@ -47,6 +47,7 @@ class ChocoContext
     @buffer = []
     @template = template
     @locals = opts.locals or {}
+    @[name] = func for name, func of opts.helpers or {}
 
   for element in elements.regular.concat elements.void
     do (element) =>

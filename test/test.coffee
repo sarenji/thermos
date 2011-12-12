@@ -92,3 +92,13 @@ describe 'a basic template', ->
         @body ->
           @p "Hello world!"
     output : '<!DOCTYPE html><html><head><title>hello</title></head><body><p>Hello world!</p></body></html>'
+
+describe 'a helper function', ->
+  it "gets included", test
+    render : ->
+      @js 'hullo.js'
+    opts:
+      helpers :
+        js : (url) ->
+          @script type: 'text/javascript', src: url
+    output : '<script type="text/javascript" src="hullo.js"></script>'
