@@ -17,12 +17,13 @@ normalizeUrl = (url, ext) ->
   else
     url
 
-helpers =
-  js : (url) ->
-    url = normalizeUrl(url, '.js')
-    @script src: url, type: 'text/javascript'
+options =
+  helpers =
+    js : (url) ->
+      url = normalizeUrl(url, '.js')
+      @script src: url, type: 'text/javascript'
 
-choco.render helpers, ->
+choco.render options, ->
   @doctype 5
   @html ->
     @head ->
