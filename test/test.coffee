@@ -75,10 +75,12 @@ describe 'a local variable', ->
   it "gets included", test
     render : (locals) ->
       @p class: "left", -> @locals.name
+      @p locals.email
     opts:
       locals :
-        name : "Bob"
-    output : '<p class="left">Bob</p>'
+        name  : "Bob"
+        email : "bob@example.com"
+    output : '<p class="left">Bob</p><p>bob@example.com</p>'
 
 describe 'a basic template', ->
   it "renders correctly", test
