@@ -3,6 +3,14 @@
 typeOf = (obj) ->
   Object::toString.call(obj).slice 8, -1
 
+config = {}
+
+@configure = (opts) ->
+  config.helpers = opts.helpers
+
+@resetConfig = (opts) ->
+  config = {}
+
 @options = options =
   DEFAULT_DOCTYPE : 5
 
@@ -50,6 +58,7 @@ class ChocoContext
     @buffer = []
     @template = template
     @locals = opts.locals or {}
+    @[name] = func for name, func of config.helpers or {}
     @[name] = func for name, func of opts.helpers or {}
 
   for element in elements.regular.concat elements.void
