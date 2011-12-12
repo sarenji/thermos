@@ -10,7 +10,7 @@ of [CoffeeKup](https://github.com/mauricemach/coffeekup).
 
 ```
 choco = require 'choco'
-choco.render
+choco.render ->
   @doctype 5
   @html ->
     @head ->
