@@ -12,10 +12,7 @@ of [CoffeeKup](https://github.com/mauricemach/coffeekup).
 choco = require 'choco'
 
 normalizeUrl = (url, ext) ->
-  if url.substr -ext.length isnt ext
-    "#{url}#{ext}"
-  else
-    url
+  if url.substr(-ext.length) isnt ext then "#{url}#{ext}" else url
 
 options =
   helpers =
