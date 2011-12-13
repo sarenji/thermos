@@ -5,6 +5,7 @@ typeOf = (obj) ->
 
 config =
   ROOT_JS_URL : '/javascripts/'
+  ROOT_CSS_URL : "/stylesheets/"
 
 @configure = (opts) ->
   config.helpers = opts.helpers
@@ -86,6 +87,10 @@ class ChocoContext
   js : (url) ->
     url = normalizeUrl(config.ROOT_JS_URL, url, '.js')
     @script type: "text/javascript", src: url
+
+  css : (url) ->
+    url = normalizeUrl(config.ROOT_CSS_URL, url, '.css')
+    @link type: "text/css", rel: "stylesheet", media: "screen", href: url
 
   tag : (tagName, args...) ->
     for arg in args

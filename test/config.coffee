@@ -43,6 +43,13 @@ describe "the default @js helper", ->
     output :
       '<script type="text/javascript" src="//example.com/test.js"></script>'
 
+describe 'the default @css helper', ->
+  it 'works with relative paths', test
+    render : ->
+      @css 'main'
+    output : '<link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/main.css"/>'
+  # all other ways work as well since @css uses the same internal helper as @js
+
 describe 'a helper function', ->
   helper_helper = (url) ->
     "#{url}.js"
