@@ -3,7 +3,8 @@
 typeOf = (obj) ->
   Object::toString.call(obj).slice 8, -1
 
-config = {}
+config =
+  ROOT_JS_URL : '/javascripts/'
 
 @configure = (opts) ->
   config.helpers = opts.helpers
@@ -50,6 +51,12 @@ doctypes =
   'mobile': '<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">'
   'ce': '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "ce-html-1.0-transitional.dtd">'
 
+
+normalizeUrl = (root, url, ext) ->
+  url = if url.substr(-ext.length) isnt ext then url + ext else url
+  if url[0] is '/' or /^[-a-z]+:\/\//.test url then url else root + url
+
+
 class ChocoContext
   constructor : (opts={}, template) ->
     if arguments.length is 1
@@ -75,6 +82,10 @@ class ChocoContext
 
   text : (txt) ->
     @buffer.push String(txt)
+
+  js : (url) ->
+    url = normalizeUrl(config.ROOT_JS_URL, url, '.js')
+    @script type: "text/javascript", src: url
 
   tag : (tagName, args...) ->
     for arg in args
