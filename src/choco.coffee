@@ -88,6 +88,7 @@ class ChocoContext
           if data = attrs.data
             delete attrs.data
             for key, val of data
+              key = key.replace /_/g, '-'
               attrs["data-#{key}"] = val
 
     attrs or= {}

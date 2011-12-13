@@ -68,8 +68,8 @@ describe 'a paragraph tag with attrs', ->
 
   it "dasherizes data attrs", test
     render : ->
-      @span data : {foo : "bar"}, "Dasherized!"
-    output : '<span data-foo="bar">Dasherized!</span>'
+      @span data : {foo_bar : "camp"}, "Dasherized!"
+    output : '<span data-foo-bar="camp">Dasherized!</span>'
 
 describe 'a local variable', ->
   it "gets included", test
