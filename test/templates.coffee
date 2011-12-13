@@ -60,16 +60,16 @@ describe 'a paragraph tag', ->
       @p "Excellent."
     output : '<p>Excellent.</p>'
 
-describe 'a paragraph tag with attrs', ->
-  it "renders correctly", test
-    render : ->
-      @p class: "left", "Excellent."
-    output : '<p class="left">Excellent.</p>'
+  describe 'with attrs', ->
+    it "renders correctly", test
+      render : ->
+        @p class: "left", "Excellent."
+      output : '<p class="left">Excellent.</p>'
 
-  it "dasherizes data attrs", test
-    render : ->
-      @span data : {foo_bar : "camp"}, "Dasherized!"
-    output : '<span data-foo-bar="camp">Dasherized!</span>'
+    it "dasherizes data attrs", test
+      render : ->
+        @span data : {foo_bar_fo : "camp"}, "Dasherized!"
+      output : '<span data-foo-bar-fo="camp">Dasherized!</span>'
 
 describe 'a local variable', ->
   it "gets included", test
