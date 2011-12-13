@@ -60,9 +60,6 @@ normalizeUrl = (root, url, ext) ->
 
 class ChocoContext
   constructor : (opts={}, template) ->
-    if arguments.length is 1
-      template = opts
-      opts     = {}
     @buffer = []
     @template = template
     @locals = opts.locals or {}
@@ -124,5 +121,8 @@ class ChocoContext
     ""
 
 @render = (opts={}, template) ->
+  if arguments.length is 1
+    template = opts
+    opts     = {}
   cc = new ChocoContext(opts, template)
   cc.render()
