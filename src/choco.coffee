@@ -92,6 +92,10 @@ class ChocoContext
     url = normalizeUrl(config.ROOT_CSS_URL, url, '.css')
     @link type: "text/css", rel: "stylesheet", media: "screen", href: url
 
+  link_to : (text, url) ->
+    url = normalizeUrl('', url, '')
+    @a href: url, text
+
   tag : (tagName, args...) ->
     for arg in args
       switch typeOf arg

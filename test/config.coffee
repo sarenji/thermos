@@ -50,6 +50,23 @@ describe 'the default @css helper', ->
     output : '<link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/main.css"/>'
   # all other ways work as well since @css uses the same internal helper as @js
 
+describe 'the default @link_to helper', ->
+  describe 'with two arguments', ->
+    it "uses first arg as text, second arg as href", test
+      render : ->
+        @link_to 'click here', 'rickroll'
+      output : '<a href="rickroll">click here</a>'
+
+    it "accepts absolute links", test
+      render : ->
+        @link_to 'click here', '/about'
+      output : '<a href="/about">click here</a>'
+
+    it "accepts other domain links", test
+      render : ->
+        @link_to 'click here', 'http://example.com'
+      output : '<a href="http://example.com">click here</a>'
+
 describe 'a helper function', ->
   helper_helper = (url) ->
     "#{url}.js"
