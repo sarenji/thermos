@@ -94,21 +94,33 @@ class ChocoContext
     @a href: url, text
 
   tag : (tagName, args...) ->
-    for arg in args
+    attrs = {}
+
+    for arg, i in args
       switch typeOf arg
         when 'Function'
           func = arg
         when 'String'
-          text = arg
+          if i is 0 and /^([#.][a-zA-Z][\w-]*)+$/.test arg
+            # parse ids/classes
+            classRegex = /\.([^#.]+)/g
+            if groups = /#([^#.]+)/.exec(arg)
+              attrs["id"] = groups.pop()
+            while groups = classRegex.exec(arg)
+              (attrs["class"] || attrs["class"] = []).push groups[1]
+            if "class" of attrs then attrs["class"] = attrs["class"].join ' '
+          else
+            text = arg
         when 'Object'
-          attrs = arg
-          if data = attrs.data
-            delete attrs.data
-            for key, val of data
-              key = key.replace /_/g, '-'
-              attrs["data-#{key}"] = val
+          for key, value of arg
+            attrs[key] = value
 
-    attrs or= {}
+    if data = attrs.data
+      delete attrs.data
+      for key, val of data
+        key = key.replace /_/g, '-'
+        attrs["data-#{key}"] = val
+
     attrs = (" #{key}=\"#{value}\"" for key, value of attrs).join ''
 
     if tagName in elements.void
