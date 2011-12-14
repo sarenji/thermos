@@ -82,10 +82,10 @@ describe 'id and classes', ->
       @p ".test"
     output : '<p class="test"></p>'
 
-  it "should work with other strings as input", test
+  it "should work with other input", test
     render : ->
-      @p "#test.a", "hi"
-    output : '<p id="test" class="a">hi</p>'
+      @p "#test.a", bogus : "bogus", "hi"
+    output : '<p id="test" class="a" bogus="bogus">hi</p>'
 
   it "should work reversed", test
     render : ->
