@@ -90,7 +90,6 @@ class ThermosContext
     @link type: "text/css", rel: "stylesheet", media: "screen", href: url
 
   link_to : (text, url) ->
-    url = normalizeUrl('', url, '')
     @a href: url, text
 
   tag : (tagName, args...) ->
