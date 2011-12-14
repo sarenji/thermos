@@ -23,6 +23,32 @@ choco.render ->
 
 ## Extending choco
 
+### Configuration
+
+```configure
+choco = require 'choco'
+
+choco.configure
+  helpers :
+    header_link : (text, url) ->
+      @h1 ->
+        @link_to text, url
+
+choco.render ->
+  @doctype 5
+  @html ->
+    @head ->
+      @title "hello"
+      @js "main"
+    @body ->
+      @header_link "Hello world!", "/"
+      @div "#content"
+        @p "foobar"
+```
+    
+
+### Passing options
+
 ```coffeescript
 choco = require 'choco'
 
@@ -40,6 +66,8 @@ choco.render options, ->
       @js "main"
     @body ->
       @header_link "Hello world!", "/"
+      @div "#content"
+        @p "foobar"
 ```
 
 ## Default helpers
