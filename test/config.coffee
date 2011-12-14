@@ -1,10 +1,10 @@
 should = require 'should'
-choco  = require '../src/choco'
+thermos  = require '../src/thermos'
 
 test = (args) ->
   ->
     {render, output, opts} = args
-    choco.render(opts, render).should.equal output
+    thermos.render(opts, render).should.equal output
 
 describe "the default @js helper", ->
   it 'works with relative paths', test
@@ -85,13 +85,13 @@ describe 'a configuration', ->
     if url.substr(-ext.length) isnt ext then "#{url}#{ext}" else url
 
   beforeEach ->
-    choco.configure
+    thermos.configure
       helpers :
         js2 : (url) ->
           @script type: 'text/javascript', src: helper_helper(url, '.js')
 
   afterEach ->
-    choco.resetConfig()
+    thermos.resetConfig()
 
   it "gets included", test
     render : ->

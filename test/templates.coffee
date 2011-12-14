@@ -1,10 +1,10 @@
 should = require 'should'
-choco  = require '../src/choco'
+thermos  = require '../src/thermos'
 
 test = (args) ->
   ->
     {render, output, opts} = args
-    choco.render(opts, render).should.equal output
+    thermos.render(opts, render).should.equal output
 
 describe "pure text", ->
   it "renders correctly", test

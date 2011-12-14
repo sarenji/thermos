@@ -1,7 +1,7 @@
 {
-  "name": "choco",
+  "name": "thermos",
   "version": "0.0.5",
-  "main": "./lib/choco",
+  "main": "./lib/thermos",
   "dependencies": {},
   "keywords": [
     "template",

@@ -1,6 +1,6 @@
-# choco
+# thermos
 
-choco is a templating engine that lets you write HTML templates in
+thermos is a templating engine that lets you write HTML templates in
 [CoffeeScript](http://coffeescript.org/).
 
 It's a branch of [CoffeeMugg](https://github.com/jaekwon/CoffeeMugg), a branch
@@ -9,9 +9,9 @@ of [CoffeeKup](https://github.com/mauricemach/coffeekup).
 ## Usage
 
 ```coffeescript
-choco = require 'choco'
+thermos = require 'thermos'
 
-choco.render ->
+thermos.render ->
   @doctype 5
   @html ->
     @head ->
@@ -21,20 +21,20 @@ choco.render ->
       @p "Hello world!"
 ```
 
-## Extending choco
+## Extending thermos
 
 ### Configuration
 
 ```configure
-choco = require 'choco'
+thermos = require 'thermos'
 
-choco.configure
+thermos.configure
   helpers :
     header_link : (text, url) ->
       @h1 ->
         @link_to text, url
 
-choco.render ->
+thermos.render ->
   @doctype 5
   @html ->
     @head ->
@@ -45,12 +45,12 @@ choco.render ->
       @div "#content"
         @p "foobar"
 ```
-    
+
 
 ### Passing options
 
 ```coffeescript
-choco = require 'choco'
+thermos = require 'thermos'
 
 options =
   helpers :
@@ -58,7 +58,7 @@ options =
       @h1 ->
         @link_to text, url
 
-choco.render options, ->
+thermos.render options, ->
   @doctype 5
   @html ->
     @head ->
@@ -72,7 +72,7 @@ choco.render options, ->
 
 ## Default helpers
 
-Currently, choco includes `@js`, `@css`, and `@link_to` helpers by default.
+Currently, thermos includes `@js`, `@css`, and `@link_to` helpers by default.
 
 ```coffeescript
 @link_to text, url
@@ -96,13 +96,13 @@ Currently, choco includes `@js`, `@css`, and `@link_to` helpers by default.
 # same as @js
 ```
 
-## Why choco?
+## Why thermos?
 
 CoffeeKup breaks closures. Extending CoffeeMugg isn't as nice as I'd like.
 
 ## Test
 
-choco uses mocha for running tests.
+thermos uses mocha for running tests.
 
 ```bash
 $ npm install
@@ -112,7 +112,7 @@ $ mocha
 ## Installation
 
 ```bash
-$ npm install choco
+$ npm install thermos
 ```
 
 ## Thanks to

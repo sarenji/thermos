@@ -58,7 +58,7 @@ normalizeUrl = (root, url, ext) ->
   if url[0] is '/' or /^[-a-z]+:\/\//.test url then url else root + url
 
 
-class ChocoContext
+class ThermosContext
   constructor : (opts={}, template) ->
     @buffer = []
     @template = template
@@ -136,5 +136,5 @@ class ChocoContext
   if arguments.length is 1
     template = opts
     opts     = {}
-  cc = new ChocoContext(opts, template)
+  cc = new ThermosContext(opts, template)
   cc.render()
