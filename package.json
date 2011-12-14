@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "prepublish": "cake build"
+    "prepublish": "coffee -o lib -c src/*.coffee"
   },
   "contributors": [
     "Maurice Machado <maurice@bitbending.com>",
