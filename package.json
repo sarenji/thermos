@@ -1,16 +1,23 @@
 {
   "name": "thermos",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./lib/thermos",
+  "homepage" : "https://github.com/sarenji/thermos",
+  "description": "Easy HTML templating in pure CoffeeScript",
   "dependencies": {},
   "keywords": [
     "template",
     "coffeescript"
   ],
+  "bugs" : "http://github.com/sarenji/thermos/issues",
+  "repository" : {
+    "type" : "git",
+    "url" : "git://github.com/sarenji/thermos.git"
+  },
   "devDependencies": {
-    "coffee-script": ">= 1.1.3",
-    "should": "0.3.2",
-    "mocha": "0.3.6"
+    "coffee-script": "1.1.x",
+    "should": "0.3.x",
+    "mocha": "0.3.x"
   },
   "scripts": {
     "test": "mocha",
