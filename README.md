@@ -25,7 +25,7 @@ thermos.render ->
 
 ### Configuration
 
-```configure
+```coffeescript
 thermos = require 'thermos'
 
 thermos.configure
