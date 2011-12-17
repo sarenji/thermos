@@ -66,6 +66,11 @@ describe 'the default @link_to helper', ->
       render : ->
         @link_to 'click here', 'http://example.com'
       output : '<a href="http://example.com">click here</a>'
+  describe 'with three arguments', ->
+    it 'uses the third as attrs, if it\'s a hash', test
+      render : ->
+        @link_to 'click here', '#', class: 'big'
+      output : '<a href="#" class="big">click here</a>'
 
 describe 'a helper function', ->
   helper_helper = (url) ->
