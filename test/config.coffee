@@ -66,11 +66,24 @@ describe 'the default @link_to helper', ->
       render : ->
         @link_to 'click here', 'http://example.com'
       output : '<a href="http://example.com">click here</a>'
+
+    it 'can take a link and a func', test
+      render : ->
+        @link_to '#', ->
+          @span 'hey'
+      output : '<a href="#"><span>hey</span></a>'
+
   describe 'with three arguments', ->
     it 'uses the third as attrs, if it\'s a hash', test
       render : ->
         @link_to 'click here', '#', class: 'big'
       output : '<a href="#" class="big">click here</a>'
+
+    it 'can take an url, attrs, and func', test
+      render : ->
+        @link_to '#', class: 'big', ->
+          @span 'click here'
+      output : '<a href="#" class="big"><span>click here</span></a>'
 
 describe 'a helper function', ->
   helper_helper = (url) ->

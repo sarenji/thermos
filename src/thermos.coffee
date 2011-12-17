@@ -89,8 +89,17 @@ class ThermosContext
     url = normalizeUrl(config.ROOT_CSS_URL, url, '.css')
     @link type: "text/css", rel: "stylesheet", media: "screen", href: url
 
-  link_to : (text, url, attrs={}) ->
-    @a href: url, text, attrs
+  link_to : (args...) ->
+    if typeOf(args[args.length - 1]) is 'Function'
+      url   = args.shift()
+      func  = args.pop()
+      attrs = args.pop() || {}
+      @a href: url, attrs, func
+    else
+      text  = args[0]
+      url   = args[1]
+      attrs = args[2]
+      @a href: url, text, attrs
 
   tag : (tagName, args...) ->
     attrs = {}
