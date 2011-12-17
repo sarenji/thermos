@@ -97,7 +97,7 @@ class ThermosContext
       @a href: url, attrs, func
     else
       text  = args[0]
-      url   = args[1]
+      url   = args[1] || text
       attrs = args[2]
       @a href: url, text, attrs
 

@@ -51,6 +51,11 @@ describe 'the default @css helper', ->
   # all other ways work as well since @css uses the same internal helper as @js
 
 describe 'the default @link_to helper', ->
+  describe 'with one argument', ->
+    it 'links to the url with the text as the url', test
+      render : ->
+        @link_to 'http://example.com'
+      output : '<a href="http://example.com">http://example.com</a>'
   describe 'with two arguments', ->
     it "uses first arg as text, second arg as href", test
       render : ->
