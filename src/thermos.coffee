@@ -93,7 +93,7 @@ class ThermosContext
     if typeOf(args[args.length - 1]) is 'Function'
       url   = args.shift()
       func  = args.pop()
-      attrs = args.pop() || {}
+      attrs = args.pop()
       @a href: url, attrs, func
     else
       text  = args[0]
