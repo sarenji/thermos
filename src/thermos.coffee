@@ -140,9 +140,14 @@ class ThermosContext
       @text "</#{tagName}>"
     ""
 
-@render = (opts={}, template) ->
+@render = render = (opts={}, template) ->
   if arguments.length is 1
     template = opts
     opts     = {}
   cc = new ThermosContext(opts, template)
   cc.render()
+
+@template = (template) ->
+  (locals) ->
+    render {locals: locals}, template
+
