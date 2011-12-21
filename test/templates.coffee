@@ -133,3 +133,14 @@ describe 'a basic template', ->
         @body ->
           @p "Hello world!"
     output : '<!DOCTYPE html><html><head><title>hello</title></head><body><p>Hello world!</p></body></html>'
+
+describe 'the template function', ->
+  it 'renders correctly when called', ->
+    template = thermos.template ({arg1, arg2}) ->
+      @p arg1
+      @p arg2
+    template(
+      arg1: 'one'
+      arg2: 'two'
+    ).should.equal '<p>one</p><p>two</p>'
+
