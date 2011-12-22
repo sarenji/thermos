@@ -109,11 +109,12 @@ class ThermosContext
         when 'Function'
           func = arg
         when 'String'
-          if i is 0 and /^([#.][a-zA-Z][\w-]*)+$/.test arg
+          if i is 0 and /^([#.][a-z_-][\w-]*)+$/i.test arg
             # parse ids/classes
+            classRegex = /\.([^#.]+)/g
             if groups = /#([^#.]+)/.exec(arg)
               attrs.id = groups.pop()
-            while groups = /\.([^#.]+)/g.exec(arg)
+            while groups = classRegex.exec(arg)
               (attrs.class ||= []).push groups[1]
             attrs.class &&= attrs.class.join ' '
           else
