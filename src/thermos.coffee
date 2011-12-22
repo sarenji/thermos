@@ -71,7 +71,7 @@ class ThermosContext
       @::[element] = ->
         @tag element, arguments...
 
-  render : (template, opts={}) ->
+  render : ->
     @template.call this, @locals
     @buffer.join ''
 
