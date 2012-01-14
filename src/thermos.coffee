@@ -135,7 +135,7 @@ class ThermosContext
       @text "<#{tagName}#{attrs}/>"
     else
       @text "<#{tagName}#{attrs}>"
-      @text func.call this if func?
+      @text func.call(this) or "" if func?
       @text text           if text?
       @text "</#{tagName}>"
     ""

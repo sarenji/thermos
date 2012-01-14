@@ -60,6 +60,11 @@ describe 'a paragraph tag', ->
       @p "Excellent."
     output : '<p>Excellent.</p>'
 
+  it "renders correctly with a blank func", test
+    render : ->
+      @p ->
+    output : '<p></p>'
+
   describe 'with attrs', ->
     it "renders correctly", test
       render : ->
