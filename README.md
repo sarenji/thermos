@@ -1,6 +1,4 @@
-# thermos
-
-[![Build Status](https://secure.travis-ci.org/sarenji/thermos.png)](http://travis-ci.org/sarenji/thermos)
+# thermos [![Build Status](https://secure.travis-ci.org/sarenji/thermos.png?branch=master)](http://travis-ci.org/sarenji/thermos)
 
 thermos is a templating engine that lets you write HTML templates in
 [CoffeeScript](http://coffeescript.org/).
