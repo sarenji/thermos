@@ -149,3 +149,10 @@ describe 'the template function', ->
       arg2: 'two'
     ).should.equal '<p>one</p><p>two</p>'
 
+describe 'a for loop', ->
+  it 'renders correctly', test
+    render : ->
+      @div ->
+        for number in [1..3]
+          @p "" + number
+    output : '<div><p>1</p><p>2</p><p>3</p></div>'
