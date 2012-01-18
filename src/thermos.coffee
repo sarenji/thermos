@@ -50,6 +50,12 @@ normalizeUrl = (root, url, ext) ->
   url = if url.substr(-ext.length) isnt ext then url + ext else url
   if url[0] is '/' or /^[-a-z]+:\/\//.test url then url else root + url
 
+escapeHTML = (str) ->
+  String(str).replace(/&/g, '&amp;')
+  .replace(/</g, '&gt;')
+  .replace(/>/g, '&lt;')
+  .replace(/—/g, '&mdash;')
+  .replace(/"/g, '&quot;')
 
 class ThermosContext
   constructor : (opts={}, template) ->
@@ -111,10 +117,13 @@ class ThermosContext
               (attrs.class ||= []).push groups[1]
             attrs.class &&= attrs.class.join ' '
           else
-            text = arg
+            text = escapeHTML arg
         when 'Object'
-          for key, value of arg
-            attrs[key] = value
+          if arg instanceof HTMLSafeString
+            text = arg.str
+          else
+            for key, value of arg
+              attrs[key] = value
 
     if data = attrs.data
       delete attrs.data
@@ -133,9 +142,18 @@ class ThermosContext
         if typeOf(returned) is "String"
           @text returned
       @text
-      @text text           if text?
+      @text String(text)   if text?
       @text "</#{tagName}>"
+    this
+
+  html_safe: (str) ->
+    new HTMLSafeString(str)
+
+  toString: ->
     ""
+
+class HTMLSafeString
+  constructor: (@str) ->
 
 @render = render = (opts={}, template) ->
   if arguments.length is 1

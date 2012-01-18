@@ -156,3 +156,16 @@ describe 'a for loop', ->
         for number in [1..3]
           @p "" + number
     output : '<div><p>1</p><p>2</p><p>3</p></div>'
+
+describe "html", ->
+  it "gets encoded correctly", test
+    render : ->
+      @h1 ->
+        @span '<b>—&</b>"'
+    output : "<h1><span>&gt;b&lt;&mdash;&amp;&gt;/b&lt;&quot;</span></h1>"
+
+  it "gets left alone if the string is modified to be html safe", test
+    render : ->
+      @h1 ->
+        @span @html_safe '<b>—&</b>"'
+    output : '<h1><span><b>—&</b>"</span></h1>'
