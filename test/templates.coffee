@@ -161,11 +161,11 @@ describe "html", ->
   it "gets encoded correctly", test
     render : ->
       @h1 ->
-        @span '<b>—&</b>"'
-    output : "<h1><span>&gt;b&lt;&mdash;&amp;&gt;/b&lt;&quot;</span></h1>"
+        @span '<b>—&</b>"\'&mdash;hi'
+    output : "<h1><span>&gt;b&lt;&mdash;&amp;&gt;/b&lt;&quot;&apos;&mdash;hi</span></h1>"
 
   it "gets left alone if the string is modified to be html safe", test
     render : ->
       @h1 ->
-        @span @html_safe '<b>—&</b>"'
-    output : '<h1><span><b>—&</b>"</span></h1>'
+        @span @html_safe '<b>—&</b>"\''
+    output : '<h1><span><b>—&</b>"\'</span></h1>'

@@ -51,11 +51,13 @@ normalizeUrl = (root, url, ext) ->
   if url[0] is '/' or /^[-a-z]+:\/\//.test url then url else root + url
 
 escapeHTML = (str) ->
-  String(str).replace(/&/g, '&amp;')
+  String(str)
+  .replace(/&(?!\w+;|#\d+;|#x[\da-f]+;)/gi, '&amp;')
   .replace(/</g, '&gt;')
   .replace(/>/g, '&lt;')
-  .replace(/—/g, '&mdash;')
   .replace(/"/g, '&quot;')
+  .replace(/'/g, '&apos;')
+  .replace(/—/g, '&mdash;')
 
 class ThermosContext
   constructor : (opts={}, template) ->
