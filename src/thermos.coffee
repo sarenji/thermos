@@ -1,4 +1,4 @@
-@version = '0.0.1'
+@version = '0.0.12'
 
 typeOf = (obj) ->
   Object::toString.call(obj).slice 8, -1

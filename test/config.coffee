@@ -104,6 +104,7 @@ describe 'a helper function', ->
     output : '<script type="text/javascript" src="hullo.js"></script>'
 
 describe 'a configuration', ->
+  # Append the `ext` to `url` if the url doesn't have particular `ext`
   helper_helper = (url, ext) ->
     if url.substr(-ext.length) isnt ext then "#{url}#{ext}" else url
 

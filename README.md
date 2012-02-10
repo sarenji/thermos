@@ -21,6 +21,20 @@ thermos.render ->
       @p "Hello world!"
 ```
 
+### HTML entities
+
+HTML entities are automatically encoded for you. Writing this:
+
+```coffeescript
+thermos.render ->
+  @h1 ->
+    @span '<b>—&</b>"\'&mdash;hi'
+```
+
+will produce `<h1><span>&gt;b&lt;&mdash;&amp;&gt;/b&lt;&quot;&apos;&mdash;hi</span></h1>`
+
+You can use `@html_safe` to prevent Thermos from auto-encoding entities for you. For example, `@span @html_safe '<b>—&</b>"\''` will output `<h1><span><b>—&</b>"\'</span></h1>`.
+
 ## Extending thermos
 
 ### Configuration
