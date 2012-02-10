@@ -8,7 +8,10 @@ config =
   ROOT_CSS_URL : "/stylesheets/"
 
 @configure = (opts) ->
-  config.helpers = opts.helpers
+  config.helpers ?= {}
+  # Append to `config.helpers` overriding any keys that already exist
+  for name, func of opts.helpers
+    config.helpers[name] = func
 
 @resetConfig = (opts) ->
   config = {}

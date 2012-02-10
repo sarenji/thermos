@@ -3,7 +3,8 @@ thermos  = require '../src/thermos'
 
 test = (args) ->
   ->
-    {render, output, opts} = args
+    {render, output, opts, beforeRender} = args
+    if beforeRender then beforeRender()
     thermos.render(opts, render).should.equal output
 
 describe "the default @js helper", ->
@@ -91,8 +92,7 @@ describe 'the default @link_to helper', ->
       output : '<a href="#" class="big"><span>click here</span></a>'
 
 describe 'a helper function', ->
-  helper_helper = (url) ->
-    "#{url}.js"
+  helper_helper = (url) -> "#{url}.js"
 
   it "gets included", test
     render : ->
@@ -128,3 +128,18 @@ describe 'a configuration', ->
           @link rel: 'text/stylesheet', href: helper_helper(url, '.css')
     output : '<head><script type="text/javascript" src="main.js"></script><link rel="text/stylesheet" href="style.css"/></head>'
 
+  
+  it "can be modified multiple times", test
+    beforeRender: ->
+      thermos.configure
+        helpers: 
+          chicken: () -> @text 'chicken'
+          dance: () -> @text 'dance'
+      thermos.configure
+        helpers: 
+          dance: () -> ' cucko cucko cuck cuck ooo'
+    render: ->
+      @span ->
+        @chicken()
+        @dance()
+    output: '<span>chicken cucko cucko cuck cuck ooo</span>'
