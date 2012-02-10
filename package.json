@@ -23,8 +23,14 @@
     "test": "mocha",
     "prepublish": "coffee -o lib -c src/*.coffee"
   },
+  "author": {
+    "name": "David Peter",
+    "email": "david.a.peter@gmail.com",
+    "url": "http://davidpeter.me"
+  },
   "contributors": [
     "Maurice Machado <maurice@bitbending.com>",
-    "jaekwon <jkwon.work@gmail.com>"
+    "jaekwon <jkwon.work@gmail.com>",
+    "Abi Raja"
   ]
 }
