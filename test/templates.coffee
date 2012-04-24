@@ -169,3 +169,25 @@ describe "html", ->
       @h1 ->
         @span @html_safe '<b>—&</b>"\''
     output : '<h1><span><b>—&</b>"\'</span></h1>'
+
+describe 'a script tag', ->
+  it "can take a function with coffeescript in it", test
+    render: ->
+      @script ->
+        # Based off the socket.io docs
+        socket = io.connect 'http://localhost'
+        socket.on 'news', (data) ->
+          console.log data
+          socket.emit 'my other event', my: 'data'
+    output : """
+    <script>function () {
+              var socket;
+              socket = io.connect(\'http://localhost\');
+              return socket.on(\'news\', function(data) {
+                console.log(data);
+                return socket.emit(\'my other event\', {
+                  my: \'data\'
+                });
+              });
+            }</script>
+    """

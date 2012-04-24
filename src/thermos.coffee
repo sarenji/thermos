@@ -93,6 +93,12 @@ class ThermosContext
     url = normalizeUrl(config.ROOT_CSS_URL, url, '.css')
     @link type: "text/css", rel: "stylesheet", media: "screen", href: url
 
+  script : (callback) ->
+    if typeOf(callback) is 'Function'
+      @tag 'script', @html_safe(callback.toString())
+    else
+      @tag 'script', arguments...
+
   link_to : (args...) ->
     if typeOf(args[args.length - 1]) is 'Function'
       url   = args.shift()
