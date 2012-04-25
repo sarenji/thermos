@@ -1,6 +1,6 @@
 {
   "name": "thermos",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "./lib/thermos",
   "homepage" : "https://github.com/sarenji/thermos",
   "description": "Easy HTML templating in pure CoffeeScript",
