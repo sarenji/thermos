@@ -180,7 +180,7 @@ describe 'a script tag', ->
           console.log data
           socket.emit 'my other event', my: 'data'
     output : """
-    <script>function () {
+    <script>(function () {
               var socket;
               socket = io.connect(\'http://localhost\');
               return socket.on(\'news\', function(data) {
@@ -189,5 +189,5 @@ describe 'a script tag', ->
                   my: \'data\'
                 });
               });
-            }</script>
+            }).call(this);</script>
     """

@@ -95,7 +95,8 @@ class ThermosContext
 
   script : (callback) ->
     if typeOf(callback) is 'Function'
-      @tag 'script', @html_safe(callback.toString())
+      string = "(#{callback.toString()}).call(this);"
+      @tag 'script', @html_safe(string)
     else
       @tag 'script', arguments...
 
