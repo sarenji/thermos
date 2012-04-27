@@ -1,6 +1,6 @@
 thermos = {}
 
-thermos.version = '0.0.14'
+thermos.version = '0.0.15'
 
 typeOf = (obj) ->
   Object::toString.call(obj).slice 8, -1
