@@ -1,4 +1,6 @@
-@version = '0.0.14'
+thermos = {}
+
+thermos.version = '0.0.14'
 
 typeOf = (obj) ->
   Object::toString.call(obj).slice 8, -1
@@ -7,16 +9,16 @@ config =
   ROOT_JS_URL : '/javascripts/'
   ROOT_CSS_URL : "/stylesheets/"
 
-@configure = (opts) ->
+thermos.configure = (opts) ->
   config.helpers ?= {}
   # Append to `config.helpers` overriding any keys that already exist
   for name, func of opts.helpers
     config.helpers[name] = func
 
-@resetConfig = (opts) ->
+thermos.resetConfig = (opts) ->
   config = {}
 
-@options = options =
+thermos.options = options =
   DEFAULT_DOCTYPE : 5
 
 elements =
@@ -167,14 +169,15 @@ class ThermosContext
 class HTMLSafeString
   constructor: (@str) ->
 
-@render = render = (opts={}, template) ->
+thermos.render = render = (opts={}, template) ->
   if arguments.length is 1
     template = opts
     opts     = {}
   cc = new ThermosContext(opts, template)
   cc.render()
 
-@template = (template) ->
+thermos.template = (template) ->
   (locals) ->
     render {locals: locals}, template
 
+if module?.exports then module.exports = thermos else @thermos = thermos
