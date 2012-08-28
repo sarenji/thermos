@@ -152,7 +152,7 @@ class ThermosContext
     else
       @text "<#{tagName}#{attrs}>"
       if func?
-        returned = func.call(this)
+        returned = func.call(this, @locals)
         if typeOf(returned) is "String"
           @text returned
       @text

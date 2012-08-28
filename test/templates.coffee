@@ -128,6 +128,15 @@ describe 'a local variable', ->
         email : "bob@example.com"
     output : '<p class="left">Bob</p><p>bob@example.com</p>'
 
+  inner = (locals) -> locals.name
+  it 'gets passed to inner functions with a different closure', test
+    render: (locals) ->
+      @p inner
+    opts:
+      locals :
+        name : "Bob"
+    output : '<p>Bob</p>'
+
 describe 'a basic template', ->
   it "renders correctly", test
     render : ->
