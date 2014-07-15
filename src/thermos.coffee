@@ -58,8 +58,8 @@ normalizeUrl = (root, url, ext) ->
 escapeHTML = (str) ->
   String(str)
   .replace(/&(?!\w+;|#\d+;|#x[\da-f]+;)/gi, '&amp;')
-  .replace(/</g, '&gt;')
-  .replace(/>/g, '&lt;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
   .replace(/"/g, '&quot;')
   .replace(/'/g, '&apos;')
   .replace(/—/g, '&mdash;')

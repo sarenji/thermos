@@ -171,7 +171,7 @@ describe "html", ->
     render : ->
       @h1 ->
         @span '<b>—&</b>"\'&mdash;hi'
-    output : "<h1><span>&gt;b&lt;&mdash;&amp;&gt;/b&lt;&quot;&apos;&mdash;hi</span></h1>"
+    output : "<h1><span>&lt;b&gt;&mdash;&amp;&lt;/b&gt;&quot;&apos;&mdash;hi</span></h1>"
 
   it "gets left alone if the string is modified to be html safe", test
     render : ->
